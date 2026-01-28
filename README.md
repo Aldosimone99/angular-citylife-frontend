@@ -1,185 +1,189 @@
-# Citylife
-## Sito Online
-[https://citylife1.netlify.app/](https://citylife1.netlify.app/)
-# Panoramica
+# CityLife — Angular Frontend Application
 
-L'applicazione si concentra sullo sviluppo urbano e si integra con la piattaforma GoRest per fornire funzionalità di gestione degli utenti, post e commenti. 
-Il sito è ottimizzato sia per Desktop sia per mobile.
-Le principali funzionalità includono:
+🌐 **Live Demo**  
+https://citylife1.netlify.app/
 
-# Pagina di Login
+CityLife is a **frontend-only web application built with Angular**, designed to simulate a small social platform.
+The application integrates with the **GoRest public REST API** to handle users, posts, and comments through real-world CRUD operations.
 
-L'applicazione offre la possibilità agli utenti di autenticarsi o registrarsi tramite la piattaforma GoRest. Ecco alcuni dettagli specifici riguardo a questa funzionalità:
+This project is part of my portfolio and focuses on **modern Angular development**, API integration, and responsive UI design.
 
-## Form di Login
+---
 
-Il form di login richiede l'autenticazione attraverso la piattaforma GoRest. 
-Per completare con successo il processo di login, è necessario fornire il token, che può essere ottenuto tramite l'autenticazione su [https://gorest.co.in/consumer/login](https://gorest.co.in/consumer/login).
+## Overview
 
-## Supporto Multilingua
+CityLife allows authenticated users to:
 
-Nella pagina di login, sotto il form, è possibile scegliere la lingua (Italiana o Inglese) da utilizzare nel sito;
-E' possibile modificarla anche dopo il login con il toggle nella navbar.
+- Log in using an external API token
+- Browse, create, and delete users
+- View user profiles
+- Create, filter, and manage posts
+- Add and delete comments
+- Switch between English and Italian
 
+The UI is fully responsive and optimized for both **desktop and mobile devices**.
 
-# Pagina Utenti
+---
 
-La pagina degli utenti offre una visione completa di tutti gli utenti disponibili, ed è possibile:
-- Effettuare ricerche per nome o email tramite la barra di ricerca.
-- Eliminare un utente.
-- Visualizzare lo stato di un utente indicato da un pallino colorato:
-  - Verde se lo stato è `active`.
-  - Rosso se lo stato è `inactive`.
-- Decidere il numero di utenti da visualizzare tramite un toggle vicino il bottone per aggiungere un nuovo utente.
+## Authentication
 
-## Utilizzo del Form di Creazione Utente
+Authentication is handled via the **GoRest API**.
 
-Il form di creazione utente si trova premendo il bottone 'add user' o 'aggiungi un utente' nella pagina Users e richiede i seguenti input:
+To access the application:
+1. Obtain an API token from: https://gorest.co.in/consumer/login
+2. Use the token in the login form
 
-- **Name**: Nome dell'utente
-- **Email**: Email dell'utente
-- **Gender**: Genere dell'utente
-- **Status**: Stato dell'utente
+The token is required to access protected routes and perform write operations.
 
-Il form contiene due bottoni:
+---
 
-- **X**: Annulla l'operazione e chiude il form.
-- **Aggiungi Utente/ Add User**: Controlla se un utente con la stessa email esiste già. Se non esiste, crea un nuovo utente e lo aggiunge alla lista. Se esiste, mostra un messaggio di errore e non crea l'utente.
+## Users Management
 
+The Users page provides full user management features:
 
-## Eliminare un utente
+- View all users
+- Search users by name or email
+- Create new users
+- Delete existing users
+- Visual status indicator:
+  - 🟢 Active
+  - 🔴 Inactive
+- Pagination and dynamic page-size selection
 
-Per eliminare un utente:
+---
 
-1. Clicca sull'icona del cestino nel box dell'utente che desideri eliminare.
-2. Si aprirà un popup con il messaggio di conferma.
-3. Seleziona "Annulla" o "Cancel" per annullare l'operazione e lasciare tutto invariato.
-4. Seleziona "Cancella" o "Delete" per confermare l'eliminazione dell'utente. L'utente sarà rimosso dalla lista.
+## User Profile
 
+Each user has a dedicated profile page containing:
 
-# Profilo Utente
+- Personal details (name, email, status)
+- A list of published posts
+- Ability to:
+  - Create new posts
+  - View comments
+  - Add comments
+  - Delete posts and comments
 
-Ogni utente ha un proprio profilo dove è possibile visualizzare:
+If a user has no posts, the following fallback message is displayed:
+```
+No posts available
+```
 
-## Sidebar a sinistra:
-Dove si trovano i dettagli dell'utente come:
-- **Nome**: Nome dell'utente.
-- **Stato**: Indicato da un pallino colorato:
-  - Verde se lo stato è `active`.
-  - Rosso se lo stato è `inactive`.
-- **Email**: Email dell'utente.
+---
 
-Nella colonna centrale è possibile:
-- Visualizzare tutti i post dell'utente,
-- Creare nuovi post.
-- Visualizzare i commenti sotto al post.
-- Eliminare post o singoli commenti.
+## Posts & Comments
 
-## Visualizzazione Post e Commenti
+The Posts section allows users to:
 
-- **Post dell'Utente**: Se l'utente ha pubblicato dei post, questi saranno visualizzati sotto i dettagli dell'utente.
-- **Comments**: Ogni post ha un bottone "Comments" o "Commenti" che, se premuto, mostra i commenti relativi a quel post. Mostrerà anche un input box dove è possibile aggiungere un ulteriore commento.
-- **Delete**: Ogni post ha un bottone delete che permette di eliminarlo. Questo bottone è disponibile anche nei commenti per eliminare il commento selezionato.
+- View a global posts feed
+- Create new posts
+- Delete posts
+- Filter posts by text
+- Navigate posts using pagination
+- Select the number of posts per page
+- Manage comments (view, add, delete)
 
-### Messaggio di Nessun Post
+---
 
-Se l'utente non ha pubblicato alcun post, verrà visualizzato un messaggio indicante che quell'utente non ha pubblicato nessun post:
-`No Posts Available`
+## Internationalization
 
-### Creazione di un Nuovo Post
+CityLife supports **English and Italian**.
 
-In ogni pagina utente è disponibile un box dove poter inserire il testo del post e pubblicarlo premendo il bottone 'Post' o 'Pubblica'
+- Language can be selected on the login page
+- It can be changed at any time using the navbar toggle
 
+---
 
+## Logout
 
-# Posts
-La pagina dei post consente di visualizzare, filtrare e gestire i post. Di seguito sono descritte le principali caratteristiche e funzionalità della pagina:
-- **Creare Post**: È possibile creare nuovi post tramite un input e un bottone per pubblicarlo, come nelle pagine profilo degli utenti.
-- **Eliminare Post**: È possibile eliminare i post dei vari utenti tramite il bottone 'delete' o 'elimina'; qui comparirà poi un popup di conferma.
-- **Filtraggio dei Post**: C'è un input che consente di filtrare inserendo del testo.
-- **Paginatore**: Permette di navigare tra le pagine dei post tramite dei bottoni posti in basso sotto alla colonna dei post.
-- **Selezionatore di Post per Pagina**: Consente di selezionare il numero di post da visualizzare per pagina, con le stesse funzionalità della pagina degli utenti.
-- **Gestione Commenti**: Ogni post ha un bottone "Commenti" o "Comments" che permette di visualizzare i commenti relativi al post. Quando premuto, oltre ai commenti, viene mostrato un input di testo che consente di inserire un nuovo commento. È possibile eliminare i vari commenti tramite l'icona del cestino.
+A logout action is available in the navigation bar.
+Logging out clears the session and redirects the user to the login page.
 
+---
 
+## Tech Stack
 
-# Logout 
-Il bottone di Logout è presente nella statusbar e permette di effettuare il logout e reinderizzerà automaticamente nella pagina di login.
-##
-##
-# Come Utilizzare
+- **Angular**
+- **TypeScript**
+- **HTML5**
+- **SCSS**
+- **Angular CLI**
+- **GoRest REST API**
+- **Netlify** (deployment)
 
-1. **Clona il repository**: `git clone <https://github.com/Aldosimone99/CityLife>`
-2. **Installa le dipendenze**: `npm install`
-3. **Avvia il progetto**: `ng serve`
-4. **Accedi all'applicazione**: Apri `http://localhost:4200` nel tuo browser.
+---
 
-Per autenticarti, segui le istruzioni nella pagina di login per ottenere il token di accesso dalla piattaforma [GoRest](https://gorest.co.in/).
+## Getting Started
 
-## API Endpoints
+### Prerequisites
 
-L'applicazione si interfaccia con l'API di GoRest per fornire funzionalità di gestione degli utenti e dei post. Di seguito sono elencati gli endpoints principali forniti dai servizi `UserService` e `PostService`:
-### Autenticazione
+- Node.js
+- Angular CLI
 
-- **Registra un nuovo utente:**
-  - Metodo: `POST`
-  - Endpoint: `/v2/users`
-  - Descrizione: Registra un nuovo utente.
+### Installation
 
-### Profilo Utente
+```bash
+git clone https://github.com/Aldosimone99/CityLife.git
+cd CityLife
+npm install
+```
 
-- **Trova tutti gli utenti:**
+### Run locally
 
-  - Metodo: `GET`
-  - Endpoint: `/v2/users`
-  - Descrizione: Ottiene le informazioni di tutti gli utenti.
+```bash
+ng serve
+```
 
-- **Elimina un utente:**
+Open your browser at:
+http://localhost:4200
 
-  - Metodo: `DELETE`
-  - Endpoint: `/v2/users/:userId`
-  - Descrizione: Cancella un utente dato il suo ID.
+---
 
-- **Modifica il profilo utente:**
-  - Metodo: `PUT`
-  - Endpoint: `/v2/users/:userId`
-  - Descrizione: Modifica il profilo di un utente.
+## API Integration
 
-### Post
+This project consumes the **GoRest REST API**.
 
-- **Trova tutti i post:**
+### Users
+- `GET /v2/users`
+- `POST /v2/users`
+- `PUT /v2/users/:userId`
+- `DELETE /v2/users/:userId`
 
-  - Metodo: `GET`
-  - Endpoint: `/v2/posts`
-  - Descrizione: Ottiene le informazioni di tutti i post.
+### Posts
+- `GET /v2/posts`
+- `GET /v2/users/:userId/posts`
+- `POST /v2/users/:userId/posts`
 
-- **Trova i post di un utente:**
+### Comments
+- `GET /v2/posts/:postId/comments`
+- `POST /v2/posts/:postId/comments`
 
-  - Metodo: `GET`
-  - Endpoint: `/v2/users/:userId/posts`
-  - Descrizione: Ottiene i post di un utente dato il suo ID.
+---
 
-- **Aggiungi un nuovo post:**
+## Purpose of the Project
 
-  - Metodo: `POST`
-  - Endpoint: `/v2/users/:userId/posts`
-  - Descrizione: Aggiunge un nuovo post per un utente specifico.
+This project was created to:
 
-- **Commenta un post:**
+- Practice **Angular frontend architecture**
+- Work with a real external REST API
+- Implement authentication and CRUD flows
+- Build a responsive, production-like UI
+- Serve as a **portfolio project** for frontend and full-stack roles
 
-  - Metodo: `POST`
-  - Endpoint: `/v2/posts/:postId/comments`
-  - Descrizione: Aggiunge un commento a un post.
+---
 
-- **Leggi i commenti di un post:**
-  - Metodo: `GET`
-  - Endpoint: `/v2/posts/:postId/comments`
-  - Descrizione: Ottiene i commenti di un post dato il suo ID.
+## Author
 
-Questo progetto è stato generato con la versione 19. [Angular CLI](https://github.com/angular/angular-cli)
+**Aldosimone Di Rosa**  
+Frontend Developer (React) · Full-Stack aware  
+📍 Italy · 🌍 Open to US Remote
 
+- Portfolio: https://aldosimone99.github.io
+- GitHub: https://github.com/Aldosimone99
+- LinkedIn: https://www.linkedin.com/in/aldosimone-di-rosa-b5a55716b/
 
+---
 
+## License
 
-
-
+This project is intended for educational and portfolio purposes.
